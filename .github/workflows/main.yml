@@ -1,4 +1,5 @@
-  name: Auto Assign
+  
+name: Auto Assign to Project(s)
 
 on:
   issues:
@@ -16,4 +17,14 @@ jobs:
       if: github.event.action == 'opened'
       with:
         project: 'https://github.com/users/Hxrv3y/projects/1'
-        column_name: 'Needs Looking Into'
+        column_name: 'Needs triage'
+  assign_central_project:
+    runs-on: ubuntu-latest
+    name: Assign to Central Project
+    steps:
+    - name: Assign NEW issues and NEW pull requests to project 10
+      uses: srggrs/assign-one-project-github-action@1.2.1
+      if: github.event.action == 'opened'
+      with:
+        project: 'https://github.com/users/Hxrv3y/projects/2'
+        column_name: 'Bug Reports'
